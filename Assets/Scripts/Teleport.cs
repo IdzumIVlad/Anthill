@@ -7,6 +7,8 @@ public class Teleport : MonoBehaviour
 {
     [SerializeField] GameObject homePos;
     [SerializeField] GameObject naturePos;
+    public Transform movePoint;
+
     private CharacterController characterController;
     private NavMeshAgent nav;
 
@@ -27,7 +29,6 @@ public class Teleport : MonoBehaviour
 
         if (other.tag == "Workers") // other.tag == "Ant(AI)" ||
         {
-            Debug.Log("Hello!");
             nav = other.gameObject.GetComponent<NavMeshAgent>();
             Vector3 dest = nav.destination;
             nav.ResetPath();
@@ -39,6 +40,7 @@ public class Teleport : MonoBehaviour
                 nav.Warp(homePos.transform.position);
 
             nav.SetDestination(dest);
+            
         }
     }
 }
